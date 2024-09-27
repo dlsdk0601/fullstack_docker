@@ -91,5 +91,3 @@ docker stop <CONTAINER-NAME>
 ```
 > 컨테이너를 삭제 시키진 않는다.
 
-<br />
-
