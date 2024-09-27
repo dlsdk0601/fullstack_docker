@@ -62,3 +62,34 @@ docker start <CONTAINER-NAME>
 
 <br />
 
+# docker run
+```shell
+docker run <CONTAINER-NAME>
+-i => 컨테이너 입력(STDIN) 을 열어놓는 옵션
+-t => 가상 터미널 (tty) 을 할당하는 옵션, 주로 -it 로 -i 와 -t 를 합께 사용 
+--name => 컨테이너 이름 설정 옵션
+-d => 컨테이너를 백그라운드에서 실행
+--rm => 컨테이너 종료시 컨테이너를 자동으로 삭제하는 옵션
+-p => 호스트와 컨테이너 포트를 연결 하는 옵션
+-v => 호스트와 컨테이너 디렉토리를 연결하는 옵션
+```
+> 옵션을 넣어서 image 를 pull 받아서 바로 container 를 만들어서 실행 시킨다.  
+
+<br />
+
+# docker Container 종료
+```shell
+docker stop <CONTAINER-NAME>
+```
+> 컨테이너를 삭제 시키진 않는다.
+
+<br />
+
+# docker Container 종료
+```shell
+docker stop <CONTAINER-NAME>
+```
+> 컨테이너를 삭제 시키진 않는다.
+
+<br />
+
