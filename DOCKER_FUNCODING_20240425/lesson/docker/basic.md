@@ -31,3 +31,34 @@ docker image rm <IMAGE-ID>
 
 <br />
 
+# docker Container 생성
+```shell
+docker create <IMAGE 이름>
+```
+> 이미지를 먼저 pull 받아야 한다.
+> --name <이름> 으로 하면 컨테이너에 이름을 지정 가능
+
+<br />
+
+# docker Container 확인
+```shell
+docker ps
+```
+> 옵션이 없다면 실행중인 컨테이너만 보인다. 전부 보려면 -a 를 붙여야한다.
+
+<br />
+
+# docker Container 삭제
+```shell
+docker rm <CONTAINER-ID>
+```
+
+<br />
+
+# docker Container 실행
+```shell
+docker start <CONTAINER-NAME>
+```
+
+<br />
+
