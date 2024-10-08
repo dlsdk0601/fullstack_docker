@@ -24,3 +24,15 @@
 
 # COPY
 # 파일 또는 디렉토리를 컨테이너에 복사
+# ex) COPY ./2021_DEV /usr/local/apache2/htdocs
+# => 2021_DEV 폴더를 컨테이너 내부에서 /usr/local/apache2/htdocs 위치로 복사 (apache2 를 예시로한거라서 복사가 될 경로는 경우마다 다름)
+
+## 예시 작성 법
+FROM httpd:alpine
+
+LABEL maintainer="inajung"
+LABEL version="1.0.0"
+
+COPY ./2021_DEV /user/local/apache2/htdocs
+
+CMD ["/bin/sh", "-c", "httpd-foreground"]
