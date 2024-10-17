@@ -1,0 +1,19 @@
+# version :: Docker Compose 파일 포맷 버전 => 3 버전으로 사용하는 것이 일반적임
+version: "3"
+
+# services :: 아래 항목에서 여러개 또는 하나의 컨테이너 설정
+services:
+  # 컨테이너의 이름
+  db:
+    image: mysql:5.7 # mysql 이라는 images 를 base image 로 사용
+    restart: always # 컨테이너가 다운됬을 경우, 항상 재시작을 하기위한 설정
+    volumes:
+      - ./mysqldata:/var/lib/mysql # cli 에서 -v 와 같은 기능의 옵션 => ./mysqldata 는 호스트 pc, /var/lib/mysql 은 컨테이너안에서 경로
+    environment: # Dockerfile 의 ENV 와 같은 역할
+      - MYSQL_ROOT_PASSWORD=funcoding
+      - MYSQL_DATABASE=fundb
+#    env_file: 환경 변수를 파일로도 읽을 수 있게 가능
+#      - ./mysql.env
+    ports: # cli 에서 -p 와 같은 기능의 옵션
+      - "3306:3306" # aa:bb 와 같이 시간으로 해석할 수 있어서 string 처리 해야한다.
+
