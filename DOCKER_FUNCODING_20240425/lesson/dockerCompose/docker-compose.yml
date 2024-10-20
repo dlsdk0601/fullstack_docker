@@ -17,3 +17,11 @@ services:
     ports: # cli 에서 -p 와 같은 기능의 옵션
       - "3306:3306" # aa:bb 와 같이 시간으로 해석할 수 있어서 string 처리 해야한다.
 
+# docker compose up -d
+# => 비 연결 모드로 docker-compose.yml 파일 참조해서 빌드해서 컨테이너 실행
+
+# docker compose stop
+# => docker-compose.yml 파일 참조해서 해당 컨테이너 중지
+
+# docker compose down
+# => docker-compose.yml 파일 참조해서 해당 컨테이너 중지하고 제거
