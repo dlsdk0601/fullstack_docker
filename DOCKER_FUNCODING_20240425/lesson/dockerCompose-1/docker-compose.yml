@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ./01_FLASK_DOCKER
+      dockerfile: Dockerfile
+    links:
+      - "db:mysqldb" # db 컨테이너를 mysqldb 라는 이름으로 연결한다.
+      # - db  이렇게 써도 가능
+    ports:
+      - "80:8080"
+    container_name: appcontainer
+    depends_on:
+      - db # app 과 db 둘중 어떤 컨테이너가 실행될지 모름 => 타이밍 안맞으면 터짐 => app 이 생기기전에 db 가 먼저 생성되어야 한다고 명시 하는것.
+
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=funcoding
+      - MYSQL_DATABASE=fundb
+    ports:
+      - "3306:3306"
+    container_name: dbcontainer
+
+
+
+
