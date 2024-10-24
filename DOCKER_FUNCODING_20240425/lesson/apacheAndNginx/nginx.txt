@@ -1,0 +1,8 @@
+# docker run
+- docker run -dit -p 80:8080 --name myos ubuntu:20.04
+- docker exec -it myos /bin/bash
+
+# nginx 설치
+- apt-get update
+- apt-get install nginx
+- apt-get install vim
