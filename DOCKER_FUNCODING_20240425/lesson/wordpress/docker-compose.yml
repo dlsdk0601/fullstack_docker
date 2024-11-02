@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  nginxproxy:
+    depends_on:
+      - nginx
+      - db
+      - wordpress
+    image: nginx:latest
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+
+  nginx:
+    image: nginx:latest
+    restart: always
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:5.7.0
+    ports:
+      - "8080:80" # 테스트를 위해서 외부 포트로 오픈 해준것일 뿐, 제대로 동작한다면 오픈하지 않아도된다.
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306 # db 는 컨테이너 이름이고 3306 은 mysql 이 쓰는 default port 임
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
